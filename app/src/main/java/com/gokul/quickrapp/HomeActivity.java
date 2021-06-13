@@ -2,7 +2,6 @@ package com.gokul.quickrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
@@ -27,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout= findViewById(R.id.tab);
         viewPager= findViewById(R.id.vpFragment);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new DashBoard(), "Home");
-        adapter.addFrag(new DashBoard(), "Upload");
+        adapter.addFrag(new Buy(), "BUY");
+        adapter.addFrag(new Buy(), "SELL");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.addTab(tabLayout.newTab().setText("Home"));

@@ -1,0 +1,2 @@
+rootProject.name = "QuickrApp"
+include ':app'

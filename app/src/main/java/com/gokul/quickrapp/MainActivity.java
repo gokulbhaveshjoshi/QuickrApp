@@ -2,6 +2,7 @@ package com.gokul.quickrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,20 +15,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "SplashActivity", Toast.LENGTH_LONG).show();
         splashScreen();
     }
 
     private void splashScreen() {
         try{
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//                /* Create an Intent that will start the Menu-Activity. */
-//                Intent mainIntent = new Intent(Splash.this,Menu.class);
-//                Splash.this.startActivity(mainIntent);
-//                Splash.this.finish();
-                toast();
-
-            }, 3000);
+            //                /* Create an Intent that will start the Menu-Activity. */
+            //                Intent mainIntent = new Intent(Splash.this,Menu.class);
+            //                Splash.this.startActivity(mainIntent);
+            //                Splash.this.finish();
+            new Handler(Looper.getMainLooper()).postDelayed(this::goToNext, 3000);
         }
 
         catch(Exception e){
@@ -35,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void toast() {
-        Toast.makeText(this, "SplashActivity", Toast.LENGTH_LONG).show();
+    private void goToNext() {
+       startActivity(new Intent(this, HomeActivity.class));
+       finish();
     }
 }

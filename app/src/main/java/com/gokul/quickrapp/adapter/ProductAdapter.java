@@ -1,6 +1,7 @@
 package com.gokul.quickrapp.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.gokul.quickrapp.R;
 import com.gokul.quickrapp.model.DataModel;
 
@@ -21,11 +23,13 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private ArrayList<DataModel> mData;
+    private ArrayList<String> product_id;
     private Context mContext;
 
-    public ProductAdapter(Context context, ArrayList<DataModel> dm){
+    public ProductAdapter(Context context, ArrayList<DataModel> dm, ArrayList<String> id){
         mContext = context;
         mData = dm;
+        product_id = id;
     }
     @NonNull
     @NotNull
@@ -40,9 +44,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull @NotNull ProductAdapter.ViewHolder holder, int position) {
         DataModel dm = mData.get(position);
-
-        holder.itemName.setText(dm.getTitle());
+        holder.itemName.setText(dm.getCategory());
         holder.itemCategory.setText(dm.getDescription());
+        holder.itemPrice.setText(dm.getProductPrice());
+        Glide.with(mContext).load(dm.getImage()).placeholder(R.drawable.app_logo).into(holder.imageView);
+
 
 
     }
@@ -55,12 +61,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
-        public TextView itemName, itemCategory;
+        public TextView itemName, itemCategory, itemPrice;
         public ViewHolder(View itemView) {
             super(itemView);
             this.imageView = itemView.findViewById(R.id.ivItem);
             this.itemName = itemView.findViewById(R.id.tvItemName);
             this.itemCategory = itemView.findViewById(R.id.tvCategory);
+            this.itemPrice = itemView.findViewById(R.id.tvPrice);
         }
     }
 }

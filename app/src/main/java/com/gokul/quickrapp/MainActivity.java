@@ -9,21 +9,21 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
+    FirebaseAuth auth ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
         splashScreen();
     }
 
     private void splashScreen() {
         try{
-            //                /* Create an Intent that will start the Menu-Activity. */
-            //                Intent mainIntent = new Intent(Splash.this,Menu.class);
-            //                Splash.this.startActivity(mainIntent);
-            //                Splash.this.finish();
             new Handler(Looper.getMainLooper()).postDelayed(this::goToNext, 3000);
         }
 
@@ -33,7 +33,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToNext() {
-       startActivity(new Intent(this, HomeActivity.class));
-       finish();
+        if(auth.getCurrentUser() == null){
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+        else{
+            startActivity(new Intent(this, BuyActivity.class));
+        }
+        finish();
+
     }
 }

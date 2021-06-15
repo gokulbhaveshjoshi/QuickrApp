@@ -4,8 +4,8 @@
     android:id="@+id/cvMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="15dp"
     android:layout_margin="10dp"
+    android:elevation="15dp"
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/ivItem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="145dp"
             android:scaleType="fitXY"
             android:src="@drawable/app_logo"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvItemName" />
 
         <TextView
+            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Product Price"

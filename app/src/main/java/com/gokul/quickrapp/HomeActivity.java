@@ -26,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout= findViewById(R.id.tab);
         viewPager= findViewById(R.id.vpFragment);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new Buy(), "BUY");
-        adapter.addFrag(new Buy(), "SELL");
+//        adapter.addFrag(new Buy(), "BUY");
+//        adapter.addFrag(new Buy(), "SELL");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.addTab(tabLayout.newTab().setText("Home"));
